@@ -3,8 +3,8 @@ PRACTICE Exam 1, problem 2.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Valerie Galluzzi, Mark Hays, Amanda Stouder, Aaron Wilkin,
-         their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues, and Joseph Law.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -111,6 +111,24 @@ def problem2a(circle, rectangle, window):
     #    DIFFICULTY:      6
     #    TIME ESTIMATE:   10 to 15 minutes.
     # -------------------------------------------------------------------------
+    circle.attach_to(window)
+    rectangle.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+    x1 = window.width
+    x2 = 0
+    y1 = 0
+    y2 = window.height
+    point1 = rg.Point(x1,y1)
+    point2 = rg.Point(x2,y2)
+    line = rg.Line(point1,point2).arrow
+    line.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+    circle.fill_color = rectangle.outline_color
+    window.render()
+
+
 
 def run_test_problem2b():
     """ Tests the  problem2b   function. """
@@ -174,7 +192,7 @@ def problem2b(rect, n, delta, win):
       :type win:    rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -182,7 +200,21 @@ def problem2b(rect, n, delta, win):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 25 minutes.
     # -------------------------------------------------------------------------
-
+    rect.attach_to(win)
+    x1 = rect.get_upper_left_corner().x
+    x2 = rect.get_lower_right_corner().x
+    y1 = rect.get_upper_left_corner().y
+    y2 = rect.get_lower_right_corner().y
+    for k in range(n):
+        x3 = x1 - (delta * (k))
+        x4 = x2 + (delta * (k))
+        y3 = y1 - (delta * (k))
+        y4 = y2 + (delta * (k))
+        point1 = rg.Point(x3,y3)
+        point2 = rg.Point(x4,y4)
+        rectangle = rg.Rectangle(point1,point2)
+        rectangle.attach_to(win)
+    win.render()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
