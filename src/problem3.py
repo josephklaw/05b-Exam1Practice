@@ -223,7 +223,7 @@ def problem3b(m, point1):
         :type point1: rg.Point
     """
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ###########################################################################
@@ -237,9 +237,12 @@ def problem3b(m, point1):
     #    TIME ESTIMATE:   20 to 30 minutes.
     # -------------------------------------------------------------------------
     window = rg.RoseWindow(400,650)
-
-
-
+    for k in range(m):
+        x = point1.x
+        y = point1.y + 60 * k
+        point2 = rg.Point(x,y)
+        problem3a(window,point2,3 + k *2)
+    window.close_on_mouse_click()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
